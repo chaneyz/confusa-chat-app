@@ -3,6 +3,7 @@ $(document).ready(function () {
 	$('#my-button').on('click', onButtonClick);
 
 	function onButtonClick(e) {
+		e.preventDefault();
 		var myMessage = {
 			name: $('#usrname').val(),
 			message: $('#chat').val()
@@ -13,6 +14,8 @@ $(document).ready(function () {
 			'https://confusa.herokuapp.com/confusa',
 			myMessage
 		);
+
+		setTimeout("$('#chat-messages').scrollTop($('#chat-messages').prop('scrollHeight'))", 500);
 	}
 	
 	function getMessages() {
@@ -37,7 +40,7 @@ $(document).ready(function () {
 		$('#chat-messages').html(htmlString);
 	}
 
-	setInterval(getMessages, 500);
+	setInterval(getMessages, 300);
 
 	getMessages();
 	
