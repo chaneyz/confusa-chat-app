@@ -13,3 +13,11 @@
     display: table-cell;
     border: 1px solid;
 }
+
+.btn-primary {
+	display: inline-block;
+}
+
+.chat-width {
+	display: inline;
+}
