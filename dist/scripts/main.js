@@ -14,9 +14,9 @@ $(document).ready(function () {
 			'https://confusa.herokuapp.com/confusa',
 			myMessage
 		);
-
-		setTimeout("$('#chat-messages').scrollTop($('#chat-messages').prop('scrollHeight'))", 500);
 	}
+	
+	
 	
 	function getMessages() {
 		$.get(
@@ -37,10 +37,13 @@ $(document).ready(function () {
 			console.log(message);
 		}	
 
+
+
 		$('#chat-messages').html(htmlString);
+		setTimeout("$('#chat-messages').scrollTop($('#chat-messages').prop('scrollHeight'))", 200);
 	}
 
-	setInterval(getMessages, 300);
+	setInterval(getMessages, 100);
 
 	getMessages();
 	
