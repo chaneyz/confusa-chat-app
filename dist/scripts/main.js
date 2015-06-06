@@ -6,8 +6,7 @@ $(document).ready(function () {
 		e.preventDefault();
 		var myMessage = {
 			name: $('#usrname').val(),
-			message: $('#chat').val(),
-			// star_messages: 
+			message: $('#chat').val(), 
 		};
 		console.log(myMessage);
 		
@@ -33,12 +32,30 @@ $(document).ready(function () {
 		);
 	}
 
+	function getChatrooms() {
+		$.get(
+			'https://confusa.herokuapp.com/confusa/top_rooms',
+			onChatrooms,
+			'json'
+		);
+	}
+
+	function onChatrooms(chatroomList) {
+		var htmlString = '';
+		for(var i=0; i<chatroomList.length; i++) {
+			var chatrooms = chatroomList[i];
+			htmlString += '<div>'+'<h4>'+chatrooms+'</h4>'+'</div>';
+			console.log(chatrooms);
+		}
+
+		$('#chat-rooms').html(htmlString)
+	}
+
 	function onLeaderboard(leaderboardList) {
 		var htmlString = '';
-		// var ldrObj = {};
 		for(var i=0; i<leaderboardList.length; i++) {
 			var leaderboard = leaderboardList[i];
-			htmlString += '<div>'+leaderboard+'</div>';
+			htmlString += '<div>'+'<h4>'+leaderboard+'</h4>'+'</div>';
 			console.log(leaderboard);
 		}
 
@@ -51,8 +68,8 @@ $(document).ready(function () {
 		var htmlString = '';
 		for(var i=0; i<messageList.length; i++) {
 			var message = messageList[i];
-			if(message.hasOwnProperty('name') && message.hasOwnProperty('message')) {
-				htmlString += '<div>'+message.name+' - '+message.message+'</div>';
+			if(message.hasOwnProperty('name') && message.hasOwnProperty('message') && message.hasOwnProperty('created_at')) {
+				htmlString += '<div>'+message.created_at+': '+'<strong>'+message.name+'</strong>'+' - '+message.message+'</div>';
 			}
 
 			console.log(message);
@@ -63,7 +80,8 @@ $(document).ready(function () {
 	}
 
 	setInterval(getMessages, 100);
-	setInterval(getLeaderboard, 6000)
+	setInterval(getLeaderboard, 6000);
+	setInterval(getChatrooms, 6000);
 
 	getMessages();
 	
