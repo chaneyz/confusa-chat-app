@@ -63,23 +63,42 @@ $(document).ready(function () {
 		);
 	}
 
-	function getChatrooms() {
+	function getTopChatRooms() {
 		$.get(
 			'https://confusa.herokuapp.com/confusa/top_rooms',
-			onChatrooms,
+			onTopChatRooms,
 			'json'
 		);
 	}
 
-	function onChatrooms(chatroomList) {
+	function getChatRooms() {
+		$.get(
+			'https://confusa.herokuapp.com/confusa/all_rooms',
+			onChatRooms,
+			'json'
+		);
+	}
+
+	function onChatRooms(chatRoomList) {
 		var htmlString = '';
-		for(var i=0; i<chatroomList.length; i++) {
-			var chatrooms = chatroomList[i];
-			htmlString += '<div>'+'<h4>'+chatrooms+'</h4>'+'</div>';
-			// console.log(chatrooms);
+		for(var i=0; i<chatRoomList.length; i++) {
+			var chatRooms = chatRoomList[i];
+			htmlString += '<div>'+'<h4>'+chatRooms+'</h4>'+'</div>';
+			console.log(chatRooms);
 		}
 
-		$('#top-chatrooms').html(htmlString)
+		$('#chat-rooms').html(htmlString)
+	}
+
+	function onTopChatRooms(TopChatRoomList) {
+		var htmlString = '';
+		for(var i=0; i<TopChatRoomList.length; i++) {
+			var TopChatRooms = TopChatRoomList[i];
+			htmlString += '<div>'+'<h4>'+TopChatRooms+'</h4>'+'</div>';
+			// console.log(TopChatRooms);
+		}
+
+		$('#top-chat-rooms').html(htmlString)
 	}
 
 	function onLeaderboard(leaderboardList) {
@@ -112,7 +131,7 @@ $(document).ready(function () {
 
 	setInterval(getMessages, 100);
 	setInterval(getLeaderboard, 6000);
-	setInterval(getChatrooms, 6000);
+	setInterval(getTopChatRooms, 6000);
 
 	getMessages();
 	
