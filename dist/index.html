@@ -6,33 +6,41 @@
 	<title>Confusa</title>
 </head>
 <body>
-	<div class="body">
-	    <div class="container-fluid">
-			<div class="row no-pad">
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					<div class="well">
+    <div class="container-fluid">
+		<div class="row no-pad">
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+				<div class="well outter-col">
+					<div class="input-group-lg">
 						<input id="usrname" type="text" class="form-control" placeholder="Username here...">
-						<h2>Leaderboard</h2>
+						
+						<!-- Leaderboard below will show top posters -->
+
+						<h2>Top User Posters</h2>
 						<div id="leader"></div>
 					</div>	
 				</div>	
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					<div class="well">
-						<div id="chat-messages"></div>
-						<div class="input-group">
-	  						<input id="chat" type="text" class="form-control" placeholder="Enter message" aria-describedby="basic-addon2">
-	  						<span class="input-group-btn"><button id="my-button" class="btn btn-info">Submit</button></span>
-						</div>
+			</div>	
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="well inner-col">
+					<div id="chat-messages"></div>
+					<div class="input-group input-group-lg">
+  						<input id="chat" type="text" class="form-control" placeholder="Enter message" aria-describedby="basic-addon2">
+  						<span class="input-group-btn"><button id="my-button" class="btn btn-info">Submit</button></span>
+					</div>
+				</div>	
+			</div>
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+				<div class="well outter-col">
+					<div class="input-group-lg">
+						<input id="chatrms" type="text" class="form-control" placeholder="Choose room...">
+						<h2>Top Chat Rooms</h2>
+						<div id="top-chatrooms"></div>
+
+						<div id=""></div>
 					</div>	
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					<div class="well">
-						<h2>Chatrooms</h2>
-						<div id="chat-rooms"></div>
-					</div>	
-				</div>
-			</div>		
-		</div>
+				</div>	
+			</div>
+		</div>		
 	</div>
 </body>
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>

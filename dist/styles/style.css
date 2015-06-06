@@ -1,5 +1,5 @@
 #chat-messages {
-	height: 40em;
+	height: 25em;
 	overflow: auto;
 	margin-top: .5em;
 	margin-bottom: .5em;
@@ -38,4 +38,12 @@
 
 .col {
 	height: 100%;
+}
+
+.outter-col {
+	border: none;
+}
+
+.inner-col {
+	margin-top: 1.35em;
 }
