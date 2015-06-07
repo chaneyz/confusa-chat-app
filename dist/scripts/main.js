@@ -116,7 +116,7 @@ $(document).ready(function () {
 		var htmlString = '';
 		for(var i=0; i<leaderboardList.length; i++) {
 			var leaderboard = leaderboardList[i];
-			htmlString += '<div>'+'<h4>'+leaderboard.name+': '+leaderboard.total_messages+'</h4>'+'</div>';
+			htmlString += '<div>'+'<h4>'+leaderboard.name+'</h4>'+' '+'<span class="badge">'+leaderboard.total_messages+'</span>'+'</div>';
 			console.log(leaderboard);
 		}
 		$('#leader').html(htmlString)

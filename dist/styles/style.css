@@ -7,6 +7,14 @@
 	margin-right: .5em;
 }
 
+
+
+
+.message-window {
+	position: absolute;
+	bottom: 0;
+}
+
 .left-column
 {
     float: none;
@@ -46,4 +54,14 @@
 
 .inner-col {
 	margin-top: 1.35em;
+}
+
+.badge {
+	background-color: #5BC0DE;
+}
+
+h4 {
+  margin-top: .67em;
+  margin-bottom: .67em;
+  display: inline;
 }
