@@ -74,6 +74,24 @@ $(document).ready(function () {
 		);
 	}
 
+	function getActiveUsers() {
+		$.get(
+			'https://confusa.herokuapp.com/confusa/recent_users',
+			onActiveUsers,
+			'json'
+		);
+	}
+
+	function onActiveUsers(activeUsersList) {
+		var htmlString = '';
+		for(var i=0; i<activeUsersList.length; i++) {
+			var activeUsers = activeUsersList[i];
+			htmlString += '<div>'+'<h4>'+activeUsers+'</h4>'+'</div>';
+			console.log(activeUsers);
+		}
+		$('#active-users').html(htmlString)
+	}
+
 	function onChatRooms(chatRoomList) {
 		var htmlString = '';
 		for(var i=0; i<chatRoomList.length; i++) {
@@ -111,9 +129,11 @@ $(document).ready(function () {
 		// console.log(messageList);
 		for(var i=0; i<messageList.length; i++) {
 			var message = messageList[i];
+			var messageTime = message.created_at;
 			if(message.hasOwnProperty('name') && message.hasOwnProperty('message') && message.hasOwnProperty('created_at')) {
-				htmlString += '<div>'+message.created_at+': '+'<strong>'+message.name+'</strong>'+' - '+message.message+'</div>';
+				htmlString += '<div>'+'['+moment(messageTime).startOf('minute').fromNow()+'] '+'<strong>'+message.name+'</strong>'+' - '+message.message+'</div>';
 			}
+
 			console.log(message);
 		}	
 		$('#chat-messages').html(htmlString);
@@ -123,6 +143,7 @@ $(document).ready(function () {
 	setInterval(getLeaderboard, 6000);
 	setInterval(getTopChatRooms, 6000);
 	setInterval(getChatRooms, 6000);
+	setInterval(getActiveUsers, 6000);
 
 	getMessages();
 	
