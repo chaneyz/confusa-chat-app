@@ -11,10 +11,8 @@ $(document).ready(function () {
 				message: $('#chat').val(),
 				room: $('#chatrms').val()
 			};
-			
 			// console.log($('#chatrms'));
-			// console.log(myMessage);
-			
+			// console.log(myMessage);	
 			$.post(
 				'https://confusa.herokuapp.com/confusa',
 				myMessage
@@ -31,15 +29,12 @@ $(document).ready(function () {
 			message: $('#chat').val(),
 			room: $('#chatrms').val()
 		};
-		
 		// console.log($('#chatrms'));
 		// console.log(myMessage);
-		
 		$.post(
 			'https://confusa.herokuapp.com/confusa',
 			myMessage
 		);
-
 		$('#chat').val("");
 	}
 	
@@ -84,9 +79,8 @@ $(document).ready(function () {
 		for(var i=0; i<chatRoomList.length; i++) {
 			var chatRooms = chatRoomList[i];
 			htmlString += '<div>'+'<h4>'+chatRooms+'</h4>'+'</div>';
-			console.log(chatRooms);
+			// console.log(chatRooms);
 		}
-
 		$('#chat-rooms').html(htmlString)
 	}
 
@@ -97,7 +91,6 @@ $(document).ready(function () {
 			htmlString += '<div>'+'<h4>'+TopChatRooms+'</h4>'+'</div>';
 			// console.log(TopChatRooms);
 		}
-
 		$('#top-chat-rooms').html(htmlString)
 	}
 
@@ -105,10 +98,9 @@ $(document).ready(function () {
 		var htmlString = '';
 		for(var i=0; i<leaderboardList.length; i++) {
 			var leaderboard = leaderboardList[i];
-			htmlString += '<div>'+'<h4>'+leaderboard+'</h4>'+'</div>';
-			// console.log(leaderboard);
+			htmlString += '<div>'+'<h4>'+leaderboard.name+': '+leaderboard.total_messages+'</h4>'+'</div>';
+			console.log(leaderboard);
 		}
-
 		$('#leader').html(htmlString)
 	}		
 
@@ -122,16 +114,15 @@ $(document).ready(function () {
 			if(message.hasOwnProperty('name') && message.hasOwnProperty('message') && message.hasOwnProperty('created_at')) {
 				htmlString += '<div>'+message.created_at+': '+'<strong>'+message.name+'</strong>'+' - '+message.message+'</div>';
 			}
-
 			console.log(message);
 		}	
-
 		$('#chat-messages').html(htmlString);
 	}
 
 	setInterval(getMessages, 100);
 	setInterval(getLeaderboard, 6000);
 	setInterval(getTopChatRooms, 6000);
+	setInterval(getChatRooms, 6000);
 
 	getMessages();
 	
